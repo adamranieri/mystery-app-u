@@ -187,7 +187,7 @@ fn random_coordinates(amount: &str) -> Json<Vec<Coordinate>>{
 #[launch]
 fn rocket() -> _ {
 
-    let message_mutex = Mutex::new(vec!["m1".to_string(),"m2".to_string(),"m3".to_string()]);
+    let message_mutex: Mutex<Vec<String>> = Mutex::new(vec![]);
 
     rocket::build().manage(message_mutex).mount("/", routes![
         index, get_all_notes, 
